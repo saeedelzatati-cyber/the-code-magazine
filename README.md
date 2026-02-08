@@ -1,1 +1,218 @@
-# the-code-magazine
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Code Magazine – Premium+</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0e141b;
+  --card:#121a23;
+  --text:#e6eaf0;
+  --muted:#9aa4b2;
+  --accent:#4db8ff;
+  --code:#0b1118;
+}
+
+body.light{
+  --bg:#f4f7fb;
+  --card:#ffffff;
+  --text:#222;
+  --muted:#555;
+  --accent:#2563eb;
+  --code:#f1f5f9;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Poppins,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.9;
+  transition:.4s;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:260px 1fr;
+}
+
+aside{
+  position:sticky;
+  top:0;
+  height:100vh;
+  padding:30px;
+  background:linear-gradient(180deg,var(--card),transparent);
+}
+
+aside h3{
+  margin-bottom:15px;
+  color:var(--accent);
+}
+
+aside a{
+  display:block;
+  margin-bottom:12px;
+  color:var(--text);
+  opacity:.8;
+  text-decoration:none;
+}
+
+aside a:hover{opacity:1;color:var(--accent)}
+
+main{
+  padding:60px;
+}
+
+header h1{
+  font-size:3rem;
+  color:var(--accent);
+}
+
+header h2{font-weight:400;margin:10px 0}
+
+.meta{color:var(--muted)}
+
+.toggle{
+  position:fixed;
+  top:20px;
+  right:20px;
+  padding:10px 14px;
+  border-radius:50%;
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+}
+
+section{margin-top:60px}
+
+section h3{
+  font-size:2rem;
+  margin-bottom:15px;
+}
+
+.codebox{
+  position:relative;
+  background:var(--code);
+  border-radius:14px;
+  padding:25px;
+  margin:25px 0;
+  font-family:"Fira Code", monospace;
+  overflow-x:auto;
+}
+
+.copy{
+  position:absolute;
+  top:15px;
+  right:15px;
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:.8rem;
+}
+
+footer{
+  margin:80px 0 40px;
+  text-align:center;
+  color:var(--muted);
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  aside{display:none}
+  main{padding:40px}
+}
+</style>
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleMode()">🌗</button>
+
+<div class="layout">
+
+<aside>
+  <h3>Chapters</h3>
+  <a href="#intro">Introduction</a>
+  <a href="#html">What is HTML</a>
+  <a href="#tags">HTML Tags</a>
+  <a href="#why">Why Learn HTML</a>
+</aside>
+
+<main>
+
+<header id="intro">
+  <h1>📘 The Code Magazine</h1>
+  <h2>The Basic Language of the Web: HTML</h2>
+  <div class="meta">Laura Jones · June 21, 2027</div>
+</header>
+
+<section id="html">
+  <h3>What is HTML?</h3>
+  <p>
+    HTML stands for HyperText Markup Language.
+    It structures content on the web.
+  </p>
+
+  <div class="codebox">
+    <button class="copy" onclick="copyCode(this)">Copy</button>
+<pre>&lt;h1&gt;Hello World&lt;/h1&gt;</pre>
+  </div>
+</section>
+
+<section id="tags">
+  <h3>HTML Tags</h3>
+  <p>Every HTML element has:</p>
+  <ul>
+    <li>Opening tag</li>
+    <li>Closing tag</li>
+    <li>Content</li>
+  </ul>
+
+  <div class="codebox">
+    <button class="copy" onclick="copyCode(this)">Copy</button>
+<pre>&lt;p&gt;This is a paragraph&lt;/p&gt;</pre>
+  </div>
+</section>
+
+<section id="why">
+  <h3>Why Learn HTML?</h3>
+  <ul>
+    <li>Build websites</li>
+    <li>Understand the web</li>
+    <li>Create apps</li>
+    <li>Have fun 😃</li>
+  </ul>
+</section>
+
+<footer>
+  Premium Educational Layout · Ready for Portfolio
+</footer>
+
+</main>
+</div>
+
+<script>
+function toggleMode(){
+  document.body.classList.toggle("light");
+}
+
+function copyCode(btn){
+  const code = btn.nextElementSibling.innerText;
+  navigator.clipboard.writeText(code);
+  btn.innerText="Copied!";
+  setTimeout(()=>btn.innerText="Copy",1200);
+}
+</script>
+
+</body>
+</html>
